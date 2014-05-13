@@ -9,14 +9,14 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class TestService {
-    @Autowired
-    private TestDao testDao;
+  @Autowired
+  private TestDao testDao;
 
-    public String testService(String id){
-        return testDao.test(id);
-    }
+  public String testService(String id) {
+    return testDao.test(id);
+  }
 
-    public int testInsert(String test) {
-        return testDao.testInsert(test);
-    }
+  public int testInsert(String test) {
+    return testDao.testInsert(test);
+  }
 }

@@ -18,10 +18,11 @@ public class ResetPasswordController {
   private UserService userService;
 
   @RequestMapping(method = RequestMethod.GET)
-  public String verifyResetCode(@PathVariable String resetCode){
+  public String verifyResetCode(@PathVariable String resetCode) {
     boolean resetCodeExists = userService.isResetCodeExist(resetCode);
-    if(resetCodeExists)
-      return "/reset/{resetCode}/";
-    return "resetCode: "+resetCode;
+    if (resetCodeExists) {
+      return "/reset";
+    }
+    return "resetCode: " + resetCode;
   }
 }

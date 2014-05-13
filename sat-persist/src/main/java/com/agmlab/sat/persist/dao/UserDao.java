@@ -12,8 +12,9 @@ import java.util.List;
 public class UserDao extends AbstractBaseDao {
   public boolean isResetCodeExist(String resetCode) {
     MapSqlParameterSource paramSource = new MapSqlParameterSource();
-    paramSource.addValue("resetCode",resetCode);
-    List<Integer> validateResetCodes = getNamedParameterJdbcTemplate().queryForList(getSql("validateResetCode"), paramSource, Integer.class);
+    paramSource.addValue("resetCode", resetCode);
+    List<Integer> validateResetCodes = getNamedParameterJdbcTemplate()
+        .queryForList(getSql("validateResetCode"), paramSource, Integer.class);
     return validateResetCodes.size() > 0;
   }
 }

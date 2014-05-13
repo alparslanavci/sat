@@ -5,14 +5,14 @@ import java.io.Serializable;
 /**
  * Created by alparslan on 12.05.2014.
  */
-public class JsonTest implements Serializable{
-    private String text;
+public class JsonTest implements Serializable {
+  private String text;
 
-    public String getText() {
-        return text;
-    }
+  public String getText() {
+    return text;
+  }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+  public void setText(String text) {
+    this.text = text;
+  }
 }
