@@ -1,10 +1,13 @@
 package com.agmlab.sat.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,13 +23,18 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
+@PropertySource("classpath:web.properties")
 @ComponentScan(basePackages = { "com.agmlab.sat.web.controller" })
 public class WebConfig extends WebMvcConfigurerAdapter {
+  @Autowired
+  private Environment webProperties;
 
   @Override
   public void addResourceHandlers(ResourceHandlerRegistry registry) {
-    registry.addResourceHandler("/resources/**")
-        .addResourceLocations("/WEB-INF/resources/");
+    if (Boolean.parseBoolean(webProperties.getProperty("displayApiDocs"))) {
+      registry.addResourceHandler("/api/**")
+          .addResourceLocations("/WEB-INF/api/");
+    }
   }
 
   @Override
