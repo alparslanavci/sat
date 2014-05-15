@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.core.env.Environment;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 import java.util.ArrayList;
@@ -29,20 +29,25 @@ import static com.google.common.collect.Lists.newArrayList;
 @ComponentScan(basePackages = "com.mangofactory.swagger")
 @PropertySource("classpath:web.properties")
 public class SwaggerConfig {
-  @Autowired
-  Environment env;
 
   public static final List<String> DEFAULT_INCLUDE_PATTERNS = Arrays
       .asList("/.*");
+
   public static final String SWAGGER_GROUP = "sat-web-api";
 
-  @Value("http://localhost:8080/")
+  @Value("${appLocation}")
   private String docsLocation;
 
   @Autowired
   private SpringSwaggerConfig springSwaggerConfig;
+
   @Autowired
   private SpringSwaggerModelConfig springSwaggerModelConfig;
+
+  @Bean
+  public static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
+    return new PropertySourcesPlaceholderConfigurer();
+  }
 
   /**
    * Adds the jackson scala module to the MappingJackson2HttpMessageConverter registered with spring
