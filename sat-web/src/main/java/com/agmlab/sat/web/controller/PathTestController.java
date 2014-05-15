@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Api(value = "pathtest", description = "Path Test API")
 public class PathTestController {
 
-  @ApiOperation(value = "Get Path Test", notes = "hop!")
+  @ApiOperation(value = "Get Path Test", notes = "Path test operation")
   @RequestMapping(value = "/path/{id}", method = RequestMethod.GET)
   public
   @ResponseBody

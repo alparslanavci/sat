@@ -23,13 +23,10 @@ public class ResetPasswordController {
   @ApiOperation(value = "Verify Reset Code", notes = "Verifies the reset code and returns the user")
   @RequestMapping(method = RequestMethod.GET)
   public String verifyResetCode(@PathVariable String resetCode) {
-//    boolean resetCodeExists = userService.isResetCodeExist(resetCode);
-//    if (resetCodeExists) {
-//      return "/reset";
-//    }
-//    return "resetCode: " + resetCode;
-
-//    model.addAttribute("testParam", "Hobaa!!!");
-    return "/reset.jsp?resetcode=" + resetCode;
+    boolean resetCodeExists = userService.isResetCodeExist(resetCode);
+    if (resetCodeExists) {
+      return "/reset";
+    }
+    return "resetCode: " + resetCode;
   }
 }
