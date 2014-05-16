@@ -2,10 +2,7 @@ package com.agmlab.sat.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.util.StringUtils;
@@ -23,8 +20,9 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  */
 @Configuration
 @EnableWebMvc
+@EnableAspectJAutoProxy
 @PropertySource("classpath:web.properties")
-@ComponentScan(basePackages = { "com.agmlab.sat.web.controller" })
+@ComponentScan(basePackages = { "com.agmlab.sat.web" })
 public class WebConfig extends WebMvcConfigurerAdapter {
   @Autowired
   private Environment webProperties;
@@ -71,7 +69,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
   @Bean
   public InternalResourceViewResolver viewResolver() {
     InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-    viewResolver.setPrefix("/WEB-INF/views");
+    viewResolver.setPrefix("/WEB-INF/views/");
     viewResolver.setSuffix(".jsp");
     return viewResolver;
   }

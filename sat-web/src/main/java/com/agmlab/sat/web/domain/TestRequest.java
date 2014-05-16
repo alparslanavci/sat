@@ -3,9 +3,9 @@ package com.agmlab.sat.web.domain;
 import java.io.Serializable;
 
 /**
- * Created by alparslan on 12.05.2014.
+ * Created by alparslan on 16.05.2014.
  */
-public class JsonTest implements Serializable {
+public class TestRequest implements Serializable{
   private String text;
 
   public String getText() {

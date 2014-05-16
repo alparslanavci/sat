@@ -16,10 +16,7 @@ import java.util.Properties;
  */
 @Configuration
 @ComponentScan("com.agmlab.sat.persist")
-//@PropertySource({"classpath:sql/"})
 public class PersistConfig {
-  //    @Inject
-  //    Environment environment;
 
   @Bean
   Properties sqlProperties() throws IOException {
